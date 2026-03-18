@@ -51,13 +51,12 @@ ERP42-Autonomous-Perception/
 └── Dynamic_Obstacle/          # 라이다 기반 장애물 판별 및 추적 알고리즘
 ```
 
-## How to Test (Without Hardware)
+## Demo & Execution
 
-본 코드는 ERP-42 실차 센서 환경에 맞춰져 있으나, 제공되는 ROS2 Bag 파일을 통해 로컬 환경에서 개별 인지 알고리즘을 테스트할 수 있습니다.
+본 프로젝트의 코드는 ERP-42 실차 센서 환경과 ROS2 토픽에 강하게 결합되어 있습니다. 
+실제 테스트에 사용된 대용량 센서 데이터(ROS2 Bag 파일)는 용량 제한으로 인해 리포지토리에 포함하지 않았으며, 각 모듈의 실제 구동 화면은 하위 디렉토리의 README에 첨부된 데모 영상(GIF)을 통해 확인하실 수 있습니다.
 
-1. 테스트용 ROS Bag 파일 다운로드 (링크 삽입 필요)
-2. 터미널에서 데이터 재생:
+각 모듈의 코드를 로컬에서 검토하고자 할 경우, 다음 명령어를 통해 의존성을 설치할 수 있습니다.
 ```bash
-ros2 bag play sample_record.db3
+pip install torch torchvision opencv-python numpy scipy scikit-learn ultralytics cv-bridge
 ```
-3. 각 모듈별 디렉토리의 README를 참조하여 노드 실행
