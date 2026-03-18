@@ -3,6 +3,8 @@
 본 디렉토리는 자율주행 플랫폼(ERP-42)을 위한 신호등 인식 알고리즘의 발전 과정을 담고 있습니다. 
 객체 검출 후 색상 필터링을 거치는 2단계 방식의 한계를 극복하고, 다양한 주행 환경(거리, 조명 변화, 좌회전 신호 등)에 대응하기 위해 End-to-End 딥러닝 분류 방식으로 파이프라인을 전면 개편한 최적화 과정을 기록했습니다.
 
+<img width="716" height="291" alt="image" src="https://github.com/user-attachments/assets/6f4814f4-4084-4edc-b1bc-40aa37170b7f" />
+
 ## Version History & Troubleshooting
 
 ### [v1] YOLO (ROI Detection) + HSV Filter (초기 모델)
@@ -40,3 +42,5 @@ ros2 run traffic_light_detection traffic_light_node
 - Sub: `/camera1/image_raw` (sensor_msgs/Image)
 - Pub (Signal): `/traffic_light_signal` (std_msgs/String) - 최종 판별된 신호 상태 발행
 - Pub (Debug): `/traffic_light_debug` (sensor_msgs/Image) - Bounding Box가 그려진 시각화 이미지 발행
+  
+<img width="208" height="208" alt="image1" src="https://github.com/user-attachments/assets/ad030294-85dd-4553-aec1-aec9ff8516bc" />           <img width="208" height="208" alt="image2" src="https://github.com/user-attachments/assets/b1f1bf56-d487-4bc4-abfa-d7eb38745d9f" />
