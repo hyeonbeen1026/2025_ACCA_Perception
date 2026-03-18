@@ -3,6 +3,8 @@
 본 디렉토리는 3D LiDAR 데이터와 차량의 Odometry 정보를 융합하여, 주행 환경 내의 장애물을 탐지하고 '동적(Dynamic)' 장애물과 '정적(Static)' 장애물로 분류하는 추적(Tracking) 알고리즘을 담고 있습니다. 
 자율주행 차량 스스로의 움직임(Ego-motion)을 상쇄하여 객체의 실제 절대 속도를 정확하게 추정하는 것이 본 알고리즘의 핵심입니다.
 
+<img width="755" height="223" alt="image1" src="https://github.com/user-attachments/assets/95091f91-47a3-4a26-a416-b11488d7ea4b" />
+
 ## Core Architecture & Troubleshooting
 
 ### 1. 자율주행 차량의 움직임 보상 (Ego-motion Compensation)
@@ -41,3 +43,5 @@ ros2 run obstacle_detection dynamic_obstacle_node
   - Red Cube: 동적 장애물 (속도 벡터 Arrow 포함)
   - Blue Cube: 정적 장애물
 - Pub (Debug): `/obstacle_debug` (std_msgs/String) - 객체별 속도 및 상태 텍스트 출력
+  
+<img width="621" height="369" alt="image" src="https://github.com/user-attachments/assets/6858c626-773c-4e0f-b4bb-0de98c3436fb" />
