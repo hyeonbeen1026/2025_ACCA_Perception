@@ -5,7 +5,7 @@
 
 ## Hardware & Software Environment
 
-- Platform: 차세대융합기술연구원 ERP-42
+- Platform: ERP-42
 - Sensors: 3D LiDAR, Web Camera, IMU, GPS
 - OS/Framework: Ubuntu 22.04 / ROS2 Humble
 - Deep Learning: PyTorch, YOLOv8, SCNN
