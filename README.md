@@ -27,8 +27,8 @@
 각 파트별 디렉토리로 이동하면 버전별 상세한 발전 과정(History)과 핵심 알고리즘 코드를 확인할 수 있습니다.
 
 ### 1. Lane Detection (차선 인식)
-- Stack: OpenCV, PyTorch, SCNN, TensorRT
-- Summary: 그림자 및 장애물 가림 현상에 취약한 기존 OpenCV 및 RANSAC 방식의 한계를 극복하기 위해 공간적 특징 추출에 특화된 SCNN 모델을 도입했습니다. 한국형 SDLane 데이터셋으로 3종의 SOTA 모델을 직접 학습 및 벤치마크하여 강건성을 검증했으며, 선정된 SCNN 모델을 TensorRT 엔진으로 변환하여 엣지 디바이스(Edge Device)에서의 실시간 추론 성능을 최적화했습니다.
+- Stack: OpenCV, PyTorch, SCNN
+- Summary: 그림자 및 장애물 가림 현상에 취약한 기존 OpenCV 및 RANSAC 방식의 한계를 극복하기 위해, 공간적 특징 추출에 특화된 SCNN 모델을 도입하여 가려진 차선의 곡률까지 추론하는 강건한 파이프라인을 구축했습니다.
 - Link: [LaneDetection 상세 보기](./LaneDetection)
 
 ### 2. Traffic Light & Sign Recognition (신호등 및 표지판 인식)
@@ -41,14 +41,20 @@
 - Summary: 정지된 객체가 자차의 이동으로 인해 동적 장애물로 오인식되는 문제를 해결했습니다. Odometry 데이터를 바탕으로 자차의 이동 변위 및 회전 각속도를 수학적으로 상쇄(Compensation)하여, 객체의 실제 절대 속도 벡터를 산출하는 고정밀 추적 알고리즘을 구현했습니다.
 - Link: [DynamicObstacle 상세 보기](./DynamicObstacle)
 
+### 4. Model Benchmark & Edge Optimization (모델 학습 및 엣지 최적화)
+- Stack: PyTorch, Albumentations, ONNX, TensorRT
+- Summary: 한국형 SDLane 데이터셋을 활용해 3종의 SOTA 모델(ERFNet, LaneNet, SCNN)을 직접 학습하고 벤치마크를 수행했습니다. 최종 선정된 SCNN 모델을 실시간 추론이 가능하도록 ONNX 변환 및 TensorRT 엔진으로 직렬화(Serialization)하여 엣지 디바이스 배포를 최적화했습니다.
+- Link: [Model_Training_Benchmark 상세 보기](./Model_Training_Benchmark)
+
 ## Repository Structure
 
 ```text
 ERP42-Autonomous-Perception/
-├── README.md                  # 전체 프로젝트 요약 및 아키텍처
-├── LaneDetection/             # 차선 인식 최적화 (v1~v3) 및 모델 벤치마크/TensorRT 변환 코드
-├── TrafficLight/              # 신호등 및 표지판 인식 최적화 히스토리 (v1~v2)
-└── DynamicObstacle/           # 라이다 기반 동적/정적 장애물 판별 및 추적 알고리즘
+├── README.md                    # 전체 프로젝트 요약 및 아키텍처
+├── LaneDetection/               # 차선 인식 모델 최적화 및 추론 코드 (v1~v3)
+├── TrafficLight/                # 신호등/표지판 인식 최적화 및 추론 코드 (v1~v2)
+├── DynamicObstacle/             # 라이다 기반 동적/정적 장애물 추적 알고리즘
+└── Model_Training_Benchmark/    # 딥러닝 모델 학습, 벤치마크 및 TensorRT 변환 파이프라인
 ```
 
 ## Demo & Execution
